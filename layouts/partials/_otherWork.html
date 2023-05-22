@@ -1,0 +1,34 @@
+<section id="fh5co-whiteBlock1" data-section="otherWork">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-heading text-left">
+                <h2>{{ with .Site.Params.otherWork.title }}{{ . | markdownify }}{{ end }}</h2>
+                <div class="row">
+                    <div class="col-md-6 subtext to-animate text-left">
+                        <h3>{{ with .Site.Params.otherWork.description }}{{ . | markdownify }}{{ end }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-bottom-padded-sm">
+            {{ range where .Site.Pages "Section" "otherWork" }}
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ .Params.more }}" class="fh5co-project-item image-popup to-animate">
+                    <img src="{{ .Params.img }}" alt="{{ .Params.alt }}" class="img-responsive">
+                    <div class="fh5co-text">
+                        <h2>{{ .Title }}</h2>
+                        <span>{{ .Params.subtitle }}</span>
+                    </div>
+                    {{/*  add small summary for the box  */}}
+                    {{ if .Params.summary }}
+                    <div class="fh5co-text">
+                        <p>{{ .Params.summary }}</p>
+                    </div>
+                    {{ end }}
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
